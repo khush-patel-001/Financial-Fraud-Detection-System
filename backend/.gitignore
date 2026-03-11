@@ -119,4 +119,4 @@ dmypy.json
 *.joblib
 models/*.pkl
 models/*.h5
-models/*.joblibdata/Base.csv
+data/Base.csv
