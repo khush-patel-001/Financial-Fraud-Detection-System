@@ -1,0 +1,286 @@
+/* RESULT DISPLAY STYLES */
+/* ===================== */
+
+.result-container {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  animation: slideIn 0.5s ease-out;
+  border: 3px solid;
+}
+
+.result-container.fraud {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border-color: var(--danger-color);
+}
+
+.result-container.legitimate {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-color: var(--success-color);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Result Header */
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.result-icon {
+  font-size: 4rem;
+  animation: bounce 0.8s ease-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.fraud-icon {
+  filter: drop-shadow(0 4px 6px rgba(239, 68, 68, 0.3));
+}
+
+.safe-icon {
+  filter: drop-shadow(0 4px 6px rgba(16, 185, 129, 0.3));
+}
+
+.result-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.fraud .result-title {
+  color: var(--danger-color);
+}
+
+.legitimate .result-title {
+  color: var(--success-color);
+}
+
+/* Result Details */
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Confidence Section */
+.confidence-section {
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.confidence-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.confidence-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.confidence-bar {
+  height: 16px;
+  background-color: var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius-lg);
+  transition: width 1s ease-out;
+  animation: fillBar 1s ease-out;
+}
+
+@keyframes fillBar {
+  from { width: 0%; }
+}
+
+/* Probability Grid */
+.probability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.probability-card {
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.probability-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.fraud-card {
+  border-top: 4px solid var(--danger-color);
+}
+
+.legitimate-card {
+  border-top: 4px solid var(--success-color);
+}
+
+.probability-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.probability-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-md);
+}
+
+.fraud-card .probability-value {
+  color: var(--danger-color);
+}
+
+.legitimate-card .probability-value {
+  color: var(--success-color);
+}
+
+.probability-bar {
+  height: 10px;
+  background-color: var(--gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.probability-fill {
+  height: 100%;
+  border-radius: var(--radius-md);
+  transition: width 1s ease-out;
+  animation: fillBar 1s ease-out;
+}
+
+.fraud-fill {
+  background: linear-gradient(90deg, var(--danger-color), var(--danger-dark));
+}
+
+.legitimate-fill {
+  background: linear-gradient(90deg, var(--success-color), var(--success-dark));
+}
+
+/* Recommendation Section */
+.recommendation {
+  background: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid;
+}
+
+.fraud-rec {
+  border-left-color: var(--danger-color);
+  background: linear-gradient(to right, rgba(239, 68, 68, 0.05), white);
+}
+
+.safe-rec {
+  border-left-color: var(--success-color);
+  background: linear-gradient(to right, rgba(16, 185, 129, 0.05), white);
+}
+
+.recommendation h3 {
+  color: var(--gray-800);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.25rem;
+}
+
+.recommendation p {
+  color: var(--gray-700);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .result-container {
+    padding: var(--spacing-lg);
+  }
+
+  .result-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .result-icon {
+    font-size: 3rem;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
+  }
+
+  .probability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .confidence-value {
+    font-size: 1.25rem;
+  }
+
+  .probability-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-container {
+    padding: var(--spacing-md);
+  }
+
+  .result-icon {
+    font-size: 2.5rem;
+  }
+
+  .result-title {
+    font-size: 1.25rem;
+  }
+
+  .confidence-label {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .recommendation {
+    padding: var(--spacing-md);
+  }
+}
